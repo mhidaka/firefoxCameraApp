@@ -17,7 +17,13 @@
   "permissions": {
     "camera": {},
     "device-storage:pictures":{ "access": "readwrite" },
-    "device-storage:sdcard":{ "access": "readwrite" }
+    "device-storage:sdcard":{ "access": "readwrite" },
+    "systemXHR": {
+      "description": "xhr! xhr!"
+    },
+    "tcp-socket" : {
+      "description" : "Create TCP sockets and communicate over them."
+    }
   },
   "installs_allowed_from": [
     "*"
