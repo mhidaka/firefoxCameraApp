@@ -86,10 +86,18 @@
              }
         };
 
+        proxies.takePictureHub = this.createHubProxy('takePictureHub'); 
+        proxies.takePictureHub.client = { };
+        proxies.takePictureHub.server = {
+            hello: function () {
+                return proxies.takePictureHub.invoke.apply(proxies.takePictureHub, $.merge(["Hello"], $.makeArray(arguments)));
+             }
+        };
+
         return proxies;
     };
 
-    signalR.hub = $.hubConnection("/signalr", { useDefaultPath: false });
+    signalR.hub = $.hubConnection("http://board-game.azurewebsites.net/signalr", { useDefaultPath: false });
     $.extend(signalR, signalR.hub.createHubProxies());
 
 }(window.jQuery, window));
