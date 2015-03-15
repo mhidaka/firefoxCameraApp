@@ -87,11 +87,18 @@
 
       // 画像をストレージへ保存
       var filename = 'fxcam_' + Date.now() + '.jpg';
-      storage.addNamed(Blob, filename);
+      var test = storage.addNamed(Blob, filename);
 
-      //alert("画像を保存しました\n" + filename);
-      alert("ここに保存\n" +  storage.storageName);
-     
+      //alert("画像を保存しました\n" + Blob.size );
+     // alert("ここに保存\n" +  storage.storageName);
+      
+      test.onsuccess = function() {
+      alert("Successfully saved " + filename);
+      };
+      test.onerror = function() {
+      alert("Error while saving to " + filename + ": " + this.error.name);
+      };
+      
       var oMyForm = new FormData();
       oMyForm.append("webmasterfile", Blob);
 
